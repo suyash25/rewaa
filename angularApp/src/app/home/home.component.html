@@ -1,0 +1,23 @@
+﻿<div class="card mt-4">
+    <h4 class="card-header">You're logged in</h4>
+    <div class="card-body">
+        <h6>Products List</h6>
+        
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        
+        <ul *ngIf="users">
+        
+            <li *ngFor="let user of users" [class.selected]="user === selectedUser" (click)="onSelect(user)">
+            <span class="badge">{{user.Name}}(click on my name for description)</span>
+            <button id="remove" (click)="deleteRow(user)">DELETE Product</button>
+          </li>
+         
+          <div *ngIf="selectedUser">
+
+            <h2>Description: {{selectedUser.Description}} </h2>
+          
+          </div>
+              </ul>
+              <button id="removeAll" (click)="deleteAll(users)">DELETE All Products</button>
+    </div>
+</div>
